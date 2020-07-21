@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/vpp"
+            android:icon="@drawable/ic_note_black_24dp"
+            android:title="@string/vpp" />
+        <item
+            android:id="@+id/pb"
+            android:icon="@drawable/ic_business_center_black_24dp"
+            android:title="@string/pb" />
+        <item
+            android:id="@+id/nv"
+            android:icon="@drawable/ic_assignment_ind_black_24dp"
+            android:title="@string/nv" />
+    </group>
+
+</menu>
