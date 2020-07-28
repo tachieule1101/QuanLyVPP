@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GiaoDien.PBActivity"
+    tools:context=".GiaoDien.VPPActivity"
     android:orientation="vertical">
 
     <TextView
@@ -19,7 +19,17 @@
     <EditText
         android:id="@+id/txtTen"
         style="@style/txt"
-        android:hint="@string/ten" />
+        android:hint="@string/dvt" />
+
+    <EditText
+        android:id="@+id/txtDVT"
+        style="@style/txt"
+        android:hint="@string/gia" />
+
+    <EditText
+        android:id="@+id/txtGia"
+        style="@style/txt"
+        android:hint="@string/nhapPB" />
 
     <LinearLayout style="@style/chucnang">
 
@@ -54,5 +64,4 @@
     <ListView
         android:id="@+id/lvDanhSach"
         style="@style/lv"></ListView>
-
 </LinearLayout>

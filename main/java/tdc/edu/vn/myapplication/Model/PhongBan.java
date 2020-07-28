@@ -5,7 +5,7 @@ public class PhongBan {
 
     @Override
     public String toString() {
-        return "ActivityPB{" +
+        return "PBActivity{" +
                 "ma='" + ma + '\'' +
                 ", ten='" + ten + '\'' +
                 '}';

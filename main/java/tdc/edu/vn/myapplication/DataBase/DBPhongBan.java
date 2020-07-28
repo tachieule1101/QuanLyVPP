@@ -23,7 +23,7 @@ public class DBPhongBan {
         ContentValues values = new ContentValues();
         values.put("ma",PhongBan.getMa());
         values.put("ten",PhongBan.getTen());
-        db.insert("ActivityPB",null,values);
+        db.insert("PBActivity",null,values);
     }
 
     public  void Sua(PhongBan PhongBan)
@@ -33,7 +33,7 @@ public class DBPhongBan {
         ContentValues values = new ContentValues();
         values.put("ma",PhongBan.getMa());
         values.put("ten",PhongBan.getTen());
-        db.update("ActivityPB",values,"ma ='"+PhongBan.getMa() +"'",null);
+        db.update("PBActivity",values,"ma ='"+PhongBan.getMa() +"'",null);
     }
 
 

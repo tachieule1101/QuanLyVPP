@@ -13,13 +13,18 @@
     <string name="in">In báo cáo</string>
     <string name="home">Trang chính</string>
 
-    <string name="mapb">Nhập Mã phòng</string>
-    <string name="tenpb">Nhập Tên phòng</string>
+    <string name="ma">Nhập Mã</string>
+    <string name="ten">Nhập Tên</string>
+    <string name="ngay">Nhập Ngày sinh</string>
+    <string name="nhapPB">Nhập Phòng ban</string>
+    <string name="dvt">Nhập ĐVT</string>
+    <string name="gia">Nhập Giá</string>
 
     <string name="tool">Chức năng</string>
     <string name="them">Thêm</string>
     <string name="xoa">Xóa</string>
     <string name="sua">Sửa</string>
     <string name="ds">Danh sách</string>
+    <string name="exit">Thoát</string>
 
 </resources>

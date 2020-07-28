@@ -1,6 +1,7 @@
 package tdc.edu.vn.myapplication.GiaoDien;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,16 +15,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
 import tdc.edu.vn.myapplication.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    AnimationDrawable wifiAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView imageView = (ImageView)findViewById(R.id.image);
+        imageView.setBackgroundResource(R.drawable.animation);
+        wifiAnimation = (AnimationDrawable) imageView.getBackground();
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -68,8 +78,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.mnExit) {
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -82,21 +92,27 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.home) {
-            finish();
             Intent intent = new Intent( MainActivity.this, MainActivity.class);
             startActivity( intent );
         } else if (id == R.id.vpp) {
-
+            Intent intent = new Intent( MainActivity.this, VPPActivity.class);
+            startActivity( intent );
         } else if (id == R.id.pb) {
-            finish();
-            Intent intent = new Intent( MainActivity.this, ActivityPB.class);
+            Intent intent = new Intent( MainActivity.this, PBActivity.class);
             startActivity( intent );
         } else if (id == R.id.nv) {
-
+            Intent intent = new Intent( MainActivity.this, NVActivity.class);
+            startActivity( intent );
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        wifiAnimation.start();
+        super.onWindowFocusChanged(hasFocus);
     }
 }
