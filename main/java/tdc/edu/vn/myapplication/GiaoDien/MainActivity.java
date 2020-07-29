@@ -3,6 +3,7 @@ package tdc.edu.vn.myapplication.GiaoDien;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.view.Menu;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
+import tdc.edu.vn.myapplication.Model.PhongBan;
 import tdc.edu.vn.myapplication.R;
 
 public class MainActivity extends AppCompatActivity
@@ -32,6 +34,15 @@ public class MainActivity extends AppCompatActivity
         ImageView imageView = (ImageView)findViewById(R.id.image);
         imageView.setBackgroundResource(R.drawable.animation);
         wifiAnimation = (AnimationDrawable) imageView.getBackground();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, PBActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }, 10000);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
