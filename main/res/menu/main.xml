@@ -5,6 +5,6 @@
     <item
         android:id="@+id/mnExit"
         android:title="@string/exit"
-        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
         app:showAsAction="always" />
 </menu>

@@ -2,48 +2,10 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@drawable/ic_baseline_1"
+        android:drawable="@drawable/ic_baseline_home_24"
         android:duration="1000"/>
     <item
-        android:drawable="@drawable/ic_baseline_2"
+        android:drawable="@drawable/ic_baseline_business_center_24"
         android:duration="1000"/>
-    <item
-        android:drawable="@drawable/ic_baseline_3"
-        android:duration="1000"/>
-    <item
-        android:drawable="@drawable/ic_baseline_4"
-        android:duration="1000"/>
-    <item
-        android:drawable="@drawable/ic_baseline_5"
-        android:duration="1000"/>
-    <item
-        android:drawable="@drawable/hiphop1"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop2"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop3"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop4"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop5"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop1"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop2"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop3"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop4"
-        android:duration="300"/>
-    <item
-        android:drawable="@drawable/hiphop5"
-        android:duration="300"/>
+
 </animation-list>

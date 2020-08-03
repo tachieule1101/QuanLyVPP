@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GiaoDien.InActivity">
+    tools:context=".GiaoDien.MainActivity">
+
+    <ImageView
+        android:id="@+id/imgLoad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ImageView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

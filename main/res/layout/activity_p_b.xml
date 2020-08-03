@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GiaoDien.PBActivity"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/tieude"
+        android:text="@string/pb" />
+
+    <EditText
+        android:id="@+id/txtMaPB"
+        style="@style/txt"
+        android:hint="@string/ma" />
+
+    <EditText
+        android:id="@+id/txtTenPB"
+        style="@style/txt"
+        android:hint="@string/ten" />
+
+    <LinearLayout style="@style/chucnang">
+
+        <Button
+            android:id="@+id/btnThem"
+            style="@style/btn"
+            android:background="@drawable/them"
+            android:text="@string/them" />
+
+        <Button
+            android:id="@+id/btnXoa"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/them"
+            android:text="@string/xoa" />
+
+        <Button
+            android:id="@+id/btnSua"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/them"
+            android:text="@string/sua" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/tieude"
+        android:text="@string/ds" />
+
+    <ListView
+        android:id="@+id/lvPB"
+        style="@style/lv"></ListView>
+</LinearLayout>
