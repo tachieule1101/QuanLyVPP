@@ -1,14 +1,12 @@
 package com.example.didong.GiaoDien;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 
 import com.example.didong.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,10 +15,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -29,6 +23,7 @@ public class QLActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Button btnIn, btnVPP, btnNV, btnPB;
+    ImageButton btnCall;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,13 +80,21 @@ public class QLActivity extends AppCompatActivity
                 startActivity( intent );
             }
         });
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( QLActivity.this, Contact.class);
+                startActivity( intent );
+            }
+        });
     }
 
     private void setConTrol() {
-        btnIn = (Button) findViewById(R.id.btnIn);
+        btnIn = (Button) findViewById(R.id.btnIN);
         btnNV = (Button) findViewById(R.id.btnNV);
         btnPB = (Button) findViewById(R.id.btnPB);
         btnVPP = (Button) findViewById(R.id.btnVPP);
+        btnCall = (ImageButton) findViewById(R.id.btnCall);
     }
 
     @Override
