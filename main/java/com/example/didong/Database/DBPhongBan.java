@@ -19,31 +19,30 @@ public class DBPhongBan {
     {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("ma",phongBan.getMa());
-        values.put("ten",phongBan.getTen());
-        db.insert("PhongBan",null,values);
+        values.put("MaPB",phongBan.getMa());
+        values.put("TenPB",phongBan.getTen());
+        db.insert("PHONGBAN",null,values);
     }
 
-    public  void Sua(PhongBan phongBan)
+    public void Sua(PhongBan phongBan)
     {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("ma",phongBan.getMa());
-        values.put("ten",phongBan.getTen());
-        db.update("phongBan",values,"ma ='"+phongBan.getMa() +"'",null);
+        values.put("TenPB",phongBan.getTen());
+        db.update("PHONGBAN",values,"MaPB = '" + phongBan.getMa() + "'",null);
     }
 
     public  void Xoa(PhongBan phongBan)
     {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String sql ="Delete from PhongBan where ma= '"+phongBan.getMa()+"'";
+        String sql ="Delete from PHONGBAN where MaPB = '"+phongBan.getMa()+"'";
         db.execSQL(sql);
     }
 
     public ArrayList<PhongBan> LayDL()
     {
         ArrayList<PhongBan> data = new ArrayList<>();
-        String sql="select * from PhongBan";
+        String sql="select * from PHONGBAN";
         SQLiteDatabase db= dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql,null);
 
@@ -67,7 +66,7 @@ public class DBPhongBan {
     public ArrayList<PhongBan> LayDL(String id)
     {
         ArrayList<PhongBan> data = new ArrayList<>();
-        String sql="select * from PhongBan where ma = '"+id+"'";
+        String sql="select * from PHONGBAN where MaPB = '"+id+"'";
         SQLiteDatabase db= dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql,null);
 

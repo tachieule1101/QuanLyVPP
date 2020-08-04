@@ -1,12 +1,7 @@
 package com.example.didong.GiaoDien;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,15 +10,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.didong.Apdapter.CustomAdapterPB;
 import com.example.didong.Database.DBPhongBan;
 import com.example.didong.Model.PhongBan;
 import com.example.didong.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -88,7 +79,7 @@ public class PBActivity extends AppCompatActivity {
         DBPhongBan dbPhongBan = new DBPhongBan(this);
 
         data_PB = dbPhongBan.LayDL();
-        apdapter = new CustomAdapterPB(this, R.layout.activity_lv, data_PB);
+        apdapter = new CustomAdapterPB(this, R.layout.activity_lv_pb, data_PB);
         lvPB.setAdapter(apdapter);
     }
 
@@ -100,7 +91,6 @@ public class PBActivity extends AppCompatActivity {
         phongBan.setTen(txtTenPB.getText().toString());
         dbPhongBan.Them(phongBan);
         clear();
-        Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
     }
 
     private void XoaDL() {
@@ -111,7 +101,6 @@ public class PBActivity extends AppCompatActivity {
         phongBan.setTen(txtTenPB.getText().toString());
         dbPhongBan.Xoa(phongBan);
         clear();
-        Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show();
     }
 
     private void SuaDL() {
@@ -122,11 +111,11 @@ public class PBActivity extends AppCompatActivity {
         phongBan.setTen(txtTenPB.getText().toString());
         dbPhongBan.Sua(phongBan);
         clear();
-        Toast.makeText(this, "Sửa thành công", Toast.LENGTH_SHORT).show();
     }
 
     private void clear() {
-
+        txtMaPB.setText("");
+        txtTenPB.setText("");
     }
 
     private void setConTrol() {

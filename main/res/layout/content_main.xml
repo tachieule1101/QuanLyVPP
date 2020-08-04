@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/btnIN"
+        android:id="@+id/btnIn"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="70dp"
@@ -55,18 +55,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btnCall"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|fill"
-        android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:background="@drawable/bg_round"
-        android:src="@drawable/ic_call"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnIn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

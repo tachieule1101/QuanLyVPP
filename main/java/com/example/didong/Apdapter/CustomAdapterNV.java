@@ -11,25 +11,27 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.didong.GiaoDien.ChiTietPBActivity;
-import com.example.didong.Model.PhongBan;
+import com.example.didong.GiaoDien.ChiTietNVActivity;
+import com.example.didong.GiaoDien.ChiTietVPPActivity;
+import com.example.didong.Model.NhanVien;
+import com.example.didong.Model.VPP;
 import com.example.didong.R;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class CustomAdapterPB extends ArrayAdapter  {
+public class CustomAdapterNV extends ArrayAdapter  {
     Context context;
     int resource;
-    ArrayList<PhongBan> data;
-    ArrayList<PhongBan> data_DS;
+    ArrayList<NhanVien> data;
+    ArrayList<NhanVien> data_DS;
 
-    public CustomAdapterPB(Context context, int resource, ArrayList<PhongBan> data) {
+    public CustomAdapterNV(Context context, int resource, ArrayList<NhanVien> data) {
         super(context, resource);
         this.context = context;
         this.resource = resource;
         this.data = data;
-        this.data_DS = new ArrayList<PhongBan>();
+        this.data_DS = new ArrayList<NhanVien>();
         this.data_DS.addAll(data);
     }
 
@@ -42,6 +44,8 @@ public class CustomAdapterPB extends ArrayAdapter  {
         ImageView imgDetail;
         TextView tvTen;
         TextView tvMa;
+        TextView tvNgay;
+        TextView tvPB;
     }
 
     @Override
@@ -52,25 +56,29 @@ public class CustomAdapterPB extends ArrayAdapter  {
             holder = new Holder();
             view = LayoutInflater.from(context).inflate(resource, null);
             holder.imgDetail = view.findViewById(R.id.imgDetail);
-            holder.tvMa = view.findViewById(R.id.tvMaPB);
-            holder.tvTen = view.findViewById(R.id.tvTenPB);
+            holder.tvMa = view.findViewById(R.id.tvMaNV);
+            holder.tvTen = view.findViewById(R.id.tvTenNV);
+            holder.tvNgay = view.findViewById(R.id.tvNgay);
+            holder.tvPB = view.findViewById(R.id.tvPB_NV);
 
             view.setTag(holder);
         } else
             holder = (Holder) view.getTag();
 
-        final PhongBan phongBan = data.get(position);
+        final NhanVien nhanVien = data.get(position);
 
-        holder.tvMa.setText(phongBan.getMa());
-        holder.tvTen.setText(phongBan.getTen());
+        holder.tvMa.setText(nhanVien.getMa());
+        holder.tvTen.setText(nhanVien.getTen());
+        holder.tvNgay.setText(nhanVien.getNgaySinh());
+        holder.tvPB.setText(nhanVien.getPhongBan());
 
         holder.imgDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i( "TAG", "onClick: vao roi" );
-                Intent intent = new Intent( context, ChiTietPBActivity.class);
+                Intent intent = new Intent( context, ChiTietNVActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("ma", phongBan.getMa());
+                bundle.putString("ma", nhanVien.getMa());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
@@ -85,7 +93,7 @@ public class CustomAdapterPB extends ArrayAdapter  {
         if (charText.length() == 0) {
             data.addAll(data_DS);
         } else {
-            for (PhongBan model : data_DS) {
+            for (NhanVien model : data_DS) {
                 if (model.getTen().toLowerCase(Locale.getDefault())
                         .contains(charText)) {
                     data.add(model);

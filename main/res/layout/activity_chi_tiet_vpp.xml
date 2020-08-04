@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".GiaoDien.ChiTietVPPActivity">
+
+    <TextView
+        style="@style/tieude"
+        android:text="@string/thongtin" />
+
+    <EditText
+        android:id="@+id/txtMaPB"
+        style="@style/txt"
+        android:hint="@string/ma" />
+
+    <EditText
+        android:id="@+id/txtTenPB"
+        style="@style/txt"
+        android:hint="@string/ten" />
+
+    <EditText
+        android:id="@+id/txtDVT"
+        style="@style/txt"
+        android:hint="@string/dvt" />
+
+    <EditText
+        android:id="@+id/txtGia"
+        style="@style/txt"
+        android:hint="@string/gia" />
+
+    <TextView
+        style="@style/tieude"
+        android:text="@string/tool" />
+</LinearLayout>

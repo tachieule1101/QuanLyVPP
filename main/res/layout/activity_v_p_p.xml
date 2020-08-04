@@ -19,17 +19,17 @@
     <EditText
         android:id="@+id/txtTenVPP"
         style="@style/txt"
-        android:hint="@string/dvt" />
+        android:hint="@string/ten" />
 
     <EditText
         android:id="@+id/txtDVT"
         style="@style/txt"
-        android:hint="@string/gia" />
+        android:hint="@string/dvt" />
 
     <EditText
         android:id="@+id/txtGia"
         style="@style/txt"
-        android:hint="@string/nhapPB" />
+        android:hint="@string/gia" />
 
     <LinearLayout style="@style/chucnang">
 
@@ -62,6 +62,6 @@
         android:text="@string/ds" />
 
     <ListView
-        android:id="@+id/lvDanhSach"
+        android:id="@+id/lvVPP"
         style="@style/lv"></ListView>
 </LinearLayout>
