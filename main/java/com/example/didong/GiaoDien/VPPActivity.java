@@ -2,6 +2,9 @@ package com.example.didong.GiaoDien;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,16 +57,55 @@ public class VPPActivity extends AppCompatActivity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                XoaDL();
-                HienThiDL();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(VPPActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn muốn xóa?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        XoaDL();
+                        HienThiDL();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
             }
         });
 
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SuaDL();
-                HienThiDL();
+                AlertDialog.Builder builder = new AlertDialog.Builder(VPPActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn muốn sửa?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SuaDL();
+                        HienThiDL();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -159,7 +201,26 @@ public class VPPActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.mnExit) {
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(VPPActivity.this);
+            builder.setTitle("Thông báo");
+            builder.setMessage("Bạn muốn thoát?");
+
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent( VPPActivity.this, QLActivity.class);
+                    startActivity( intent );
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         return super.onOptionsItemSelected(item);

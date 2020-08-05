@@ -30,7 +30,9 @@
         android:id="@+id/txtGia"
         style="@style/txt"
         android:hint="@string/gia" />
-
+    <TextView
+        style="@style/tieude"
+        android:text="@string/tool" />
     <LinearLayout style="@style/chucnang">
 
         <Button

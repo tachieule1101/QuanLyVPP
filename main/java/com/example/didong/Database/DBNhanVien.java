@@ -41,6 +41,9 @@ public class DBNhanVien {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql ="Delete from NHANVIEN where MaNV = '"+nhanVien.getMa()+"'";
         db.execSQL(sql);
+
+        String sql2 ="Delete from CAPNHATVPP where MaNV = '"+nhanVien.getMa()+"'";
+        db.execSQL(sql2);
     }
 
     public ArrayList<NhanVien> LayDL()
@@ -72,7 +75,7 @@ public class DBNhanVien {
     public ArrayList<NhanVien> LayDL(String id)
     {
         ArrayList<NhanVien> data = new ArrayList<>();
-        String sql="select * from NHANVIEN where MaNV0 = '"+id+"'";
+        String sql="select * from NHANVIEN where MaNV = '"+id+"'";
         SQLiteDatabase db= dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql,null);
 

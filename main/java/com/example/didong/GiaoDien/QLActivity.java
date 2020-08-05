@@ -1,9 +1,10 @@
 package com.example.didong.GiaoDien;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -17,10 +18,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -28,6 +25,8 @@ import androidx.appcompat.widget.Toolbar;
 public class QLActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    AnimationDrawable move;
+    ImageView imgLoad;
     Button btnIn, btnVPP, btnNV, btnPB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +56,9 @@ public class QLActivity extends AppCompatActivity
     }
 
     private void setEvent() {
+        imgLoad.setBackgroundResource(R.drawable.animation);
+        move = (AnimationDrawable) imgLoad.getBackground();
+
         btnNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +83,7 @@ public class QLActivity extends AppCompatActivity
         btnIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( QLActivity.this, InActivity.class);
+                Intent intent = new Intent( QLActivity.this, CPActivity.class);
                 startActivity( intent );
             }
         });
@@ -92,6 +94,8 @@ public class QLActivity extends AppCompatActivity
         btnNV = (Button) findViewById(R.id.btnNV);
         btnPB = (Button) findViewById(R.id.btnPB);
         btnVPP = (Button) findViewById(R.id.btnVPP);
+
+        imgLoad= findViewById(R.id.imgMain);
     }
 
     @Override
@@ -110,7 +114,25 @@ public class QLActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.mnExit) {
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(QLActivity.this);
+            builder.setTitle("Thông báo");
+            builder.setMessage("Bạn muốn thoát?");
+
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -121,25 +143,22 @@ public class QLActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.home) {
-            Intent intent = new Intent( QLActivity.this, MainActivity.class);
+        if (id == R.id.in) {
+            Intent intent = new Intent( QLActivity.this, CPActivity.class);
             startActivity( intent );
         } else if (id == R.id.in) {
-            Intent intent = new Intent( QLActivity.this, InActivity.class);
-            startActivity( intent );
-        }else if (id == R.id.vpp) {
-            Intent intent = new Intent( QLActivity.this, VPPActivity.class);
-            startActivity( intent );
-        } else if (id == R.id.pb) {
-            Intent intent = new Intent( QLActivity.this, PBActivity.class);
-            startActivity( intent );
-        } else if (id == R.id.nv) {
-            Intent intent = new Intent( QLActivity.this, NVActivity.class);
+            Intent intent = new Intent( QLActivity.this, CPActivity.class);
             startActivity( intent );
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        move.start();
+        super.onWindowFocusChanged(hasFocus);
     }
 }

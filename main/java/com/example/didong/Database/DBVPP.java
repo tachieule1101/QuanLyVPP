@@ -40,6 +40,9 @@ public class DBVPP {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql ="Delete from VPP where MaVPP = '"+vpp.getMa()+"'";
         db.execSQL(sql);
+
+        String sql2 ="Delete from CAPNHATVPP where MaVPP = '"+vpp.getMa()+"'";
+        db.execSQL(sql2);
     }
 
     public ArrayList<VPP> LayDL()

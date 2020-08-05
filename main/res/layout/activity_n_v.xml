@@ -45,7 +45,9 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
+    <TextView
+        style="@style/tieude"
+        android:text="@string/tool" />
     <LinearLayout style="@style/chucnang">
 
         <Button

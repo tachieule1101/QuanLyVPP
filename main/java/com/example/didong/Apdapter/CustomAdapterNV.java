@@ -12,9 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.didong.GiaoDien.ChiTietNVActivity;
-import com.example.didong.GiaoDien.ChiTietVPPActivity;
 import com.example.didong.Model.NhanVien;
-import com.example.didong.Model.VPP;
 import com.example.didong.R;
 
 import java.util.ArrayList;
@@ -42,8 +40,8 @@ public class CustomAdapterNV extends ArrayAdapter  {
 
     private static class Holder {
         ImageView imgDetail;
+        ImageView imgHinh;
         TextView tvTen;
-        TextView tvMa;
         TextView tvNgay;
         TextView tvPB;
     }
@@ -55,8 +53,8 @@ public class CustomAdapterNV extends ArrayAdapter  {
         if (view == null) {
             holder = new Holder();
             view = LayoutInflater.from(context).inflate(resource, null);
-            holder.imgDetail = view.findViewById(R.id.imgDetail);
-            holder.tvMa = view.findViewById(R.id.tvMaNV);
+            holder.imgDetail = view.findViewById(R.id.imgDetailNV);
+            holder.imgHinh = view.findViewById(R.id.imgHinhNV);
             holder.tvTen = view.findViewById(R.id.tvTenNV);
             holder.tvNgay = view.findViewById(R.id.tvNgay);
             holder.tvPB = view.findViewById(R.id.tvPB_NV);
@@ -67,7 +65,7 @@ public class CustomAdapterNV extends ArrayAdapter  {
 
         final NhanVien nhanVien = data.get(position);
 
-        holder.tvMa.setText(nhanVien.getMa());
+        holder.imgHinh.setBackgroundResource(R.drawable.nv);
         holder.tvTen.setText(nhanVien.getTen());
         holder.tvNgay.setText(nhanVien.getNgaySinh());
         holder.tvPB.setText(nhanVien.getPhongBan());
@@ -78,7 +76,7 @@ public class CustomAdapterNV extends ArrayAdapter  {
                 Log.i( "TAG", "onClick: vao roi" );
                 Intent intent = new Intent( context, ChiTietNVActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("ma", nhanVien.getMa());
+                bundle.putString("MaNV", nhanVien.getMa());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

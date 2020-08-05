@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quản Lý VPP</string>
+    <string name="app_name">Quản Lý Văn phòng phẩm</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -13,12 +13,13 @@
     <string name="nv">Nhân viên</string>
     <string name="in">In báo cáo</string>
     <string name="cp">Cấp phát</string>
+    <string name="cpvpp">Cấp phát Văn phòng phẩm</string>
     <string name="home">Trang chính</string>
 
     <string name="ma">Nhập Mã</string>
     <string name="ten">Nhập Tên</string>
     <string name="ngay">Nhập Ngày sinh</string>
-    <string name="nhapPB">Nhập Phòng ban</string>
+    <string name="sophieu">Nhập Số phiếu</string>
     <string name="dvt">Nhập ĐVT</string>
     <string name="gia">Nhập Giá</string>
 
@@ -28,7 +29,6 @@
     <string name="sua">Sửa</string>
     <string name="ds">Danh sách</string>
     <string name="exit">Thoát</string>
-    <string name="title_activity_phong_ban">PhongBanActivity</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>

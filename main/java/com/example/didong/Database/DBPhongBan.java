@@ -35,8 +35,11 @@ public class DBPhongBan {
     public  void Xoa(PhongBan phongBan)
     {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String sql ="Delete from PHONGBAN where MaPB = '"+phongBan.getMa()+"'";
-        db.execSQL(sql);
+        String sqlPB ="Delete from PHONGBAN where MaPB = '"+phongBan.getMa()+"'";
+        db.execSQL(sqlPB);
+
+        String sqlNV ="Delete from NHANVIEN where MaPB = '"+phongBan.getMa()+"'";
+        db.execSQL(sqlNV);
     }
 
     public ArrayList<PhongBan> LayDL()

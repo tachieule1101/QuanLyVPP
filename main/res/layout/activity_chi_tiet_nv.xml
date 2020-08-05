@@ -10,18 +10,15 @@
         style="@style/tieude"
         android:text="@string/thongtin" />
 
-    <EditText
-        android:id="@+id/txtMaPB"
-        style="@style/txt"
-        android:hint="@string/ma" />
+    <TextView
+        android:id="@+id/tvMaNV"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18dp"
+        android:gravity="center"></TextView>
 
     <EditText
-        android:id="@+id/txtTenPB"
-        style="@style/txt"
-        android:hint="@string/ten" />
-
-    <EditText
-        android:id="@+id/txtTenNV"
+        android:id="@+id/txtCTTenNV"
         style="@style/txt"
         android:hint="@string/ten" />
 
@@ -30,12 +27,48 @@
         style="@style/txt"
         android:hint="@string/ngay" />
 
-    <EditText
-        android:id="@+id/txtPB_NV"
-        style="@style/txt"
-        android:hint="@string/pb" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="fill"
+            android:text=" Phòng ban"
+            android:textSize="18dp">
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spnPB"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <TextView
         style="@style/tieude"
         android:text="@string/tool" />
+
+    <LinearLayout style="@style/chucnang">
+
+        <Button
+            android:id="@+id/btnXoa"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/them"
+            android:text="@string/xoa" />
+
+        <Button
+            android:id="@+id/btnSua"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/them"
+            android:text="@string/sua" />
+
+    </LinearLayout>
+
 </LinearLayout>

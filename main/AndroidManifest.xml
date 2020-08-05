@@ -9,21 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GiaoDien.InActivity"></activity>
+        <activity android:name=".GiaoDien.ChiTietCPActivity"></activity>
+        <activity android:name=".GiaoDien.ChiTietNVActivity" />
+        <activity android:name=".GiaoDien.ChiTietVPPActivity" />
+        <activity android:name=".GiaoDien.ChiTietPBActivity" />
+        <activity android:name=".GiaoDien.CPActivity" />
         <activity android:name=".GiaoDien.VPPActivity" />
         <activity android:name=".GiaoDien.NVActivity" />
         <activity android:name=".GiaoDien.PBActivity" />
-        <activity android:name=".GiaoDien.MainActivity">
+        <activity
+            android:name=".GiaoDien.QLActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".GiaoDien.QLActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

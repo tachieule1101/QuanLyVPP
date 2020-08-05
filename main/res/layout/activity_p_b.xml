@@ -20,7 +20,9 @@
         android:id="@+id/txtTenPB"
         style="@style/txt"
         android:hint="@string/ten" />
-
+    <TextView
+        style="@style/tieude"
+        android:text="@string/tool" />
     <LinearLayout style="@style/chucnang">
 
         <Button

@@ -3,7 +3,6 @@ package com.example.didong.Apdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +38,9 @@ public class CustomAdapterPB extends ArrayAdapter  {
     }
 
     private static class Holder {
+        ImageView imgHinh;
         ImageView imgDetail;
         TextView tvTen;
-        TextView tvMa;
     }
 
     @Override
@@ -51,26 +50,40 @@ public class CustomAdapterPB extends ArrayAdapter  {
         if (view == null) {
             holder = new Holder();
             view = LayoutInflater.from(context).inflate(resource, null);
-            holder.imgDetail = view.findViewById(R.id.imgDetail);
-            holder.tvMa = view.findViewById(R.id.tvMaPB);
+            holder.imgHinh = view.findViewById(R.id.imgHinhPB);
             holder.tvTen = view.findViewById(R.id.tvTenPB);
-
+            holder.imgDetail = view.findViewById(R.id.imgDetailPB);
             view.setTag(holder);
         } else
             holder = (Holder) view.getTag();
 
         final PhongBan phongBan = data.get(position);
 
-        holder.tvMa.setText(phongBan.getMa());
+        if (phongBan.getMa().equals("PB01"))
+        {
+            holder.imgHinh.setBackgroundResource(R.drawable.phong_ky_thuat);
+        }
+        else if (phongBan.getMa().equals("PB02"))
+        {
+            holder.imgHinh.setBackgroundResource(R.drawable.phong_tai_chinh);
+        }
+        else if (phongBan.getMa().equals("PB03"))
+        {
+            holder.imgHinh.setBackgroundResource(R.drawable.phong_thiet_ke);
+        }
+        else
+        {
+            holder.imgHinh.setBackgroundResource(R.drawable.hinh1);
+        }
+
         holder.tvTen.setText(phongBan.getTen());
 
         holder.imgDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i( "TAG", "onClick: vao roi" );
                 Intent intent = new Intent( context, ChiTietPBActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("ma", phongBan.getMa());
+                bundle.putString("MaPB", phongBan.getMa());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

@@ -4,43 +4,40 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <ImageView
+        android:id="@+id/imgHinhNV"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/hinh1" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:background="@color/colorAccent"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvMaNV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ma" />
-
-        <TextView
             android:id="@+id/tvTenNV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/chitiet"
             android:text="ten" />
 
         <TextView
             android:id="@+id/tvNgay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/chitiet"
             android:text="ngay" />
 
         <TextView
             android:id="@+id/tvPB_NV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/chitiet"
             android:text="phong ban" />
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imgDetail"
+        android:id="@+id/imgDetailNV"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_baseline_delete_24" />
+        android:src="@drawable/ic_baseline_list_24" />
 </LinearLayout>

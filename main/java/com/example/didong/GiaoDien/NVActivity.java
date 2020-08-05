@@ -2,6 +2,9 @@ package com.example.didong.GiaoDien;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,18 +25,17 @@ import com.example.didong.R;
 
 import java.util.ArrayList;
 
-public class NVActivity extends AppCompatActivity {
+public class NVActivity extends AppCompatActivity{
 
-    Spinner spnPB;
+    Spinner spin;
     Button btnThem, btnXoa, btnSua;
-    EditText txtMaNV, txtTenNV, txtNgay, txtPB;
+    EditText txtMaNV, txtTenNV, txtNgay;
     ListView lvNV;
     boolean ngonngu = true;
 
     CustomAdapterNV apdapter;
     ArrayList<NhanVien> data_NV = new ArrayList<>();
     ArrayList<PhongBan> data_PB = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +56,18 @@ public class NVActivity extends AppCompatActivity {
             l.add(data_PB.get(i).getTen());
         }
 
-        ArrayAdapter<String> adapterNV = new ArrayAdapter(this, android.R.layout.simple_spinner_item, l);
-        adapterNV.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,l);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 
-        spnPB.setAdapter(adapterNV);
+        spin.setAdapter(adapter);
 
         HienThiDL();
 
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 ThemDL();
                 HienThiDL();
 
@@ -72,16 +76,54 @@ public class NVActivity extends AppCompatActivity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                XoaDL();
-                HienThiDL();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(NVActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn muốn xóa?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        XoaDL();
+                        HienThiDL();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SuaDL();
-                HienThiDL();
+                AlertDialog.Builder builder = new AlertDialog.Builder(NVActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn muốn sửa?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SuaDL();
+                        HienThiDL();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -91,8 +133,15 @@ public class NVActivity extends AppCompatActivity {
                 NhanVien nhanVien = data_NV.get(position);
                 txtMaNV.setText(nhanVien.getMa());
                 txtTenNV.setText(nhanVien.getTen());
-                txtNgay.setText(nhanVien.getTen());
-                txtPB.setText(nhanVien.getTen());
+                txtNgay.setText(nhanVien.getNgaySinh());
+
+                for (int i = 0; i < data_PB.size(); i++) {
+                    if (data_PB.get(i).getMa().equals(nhanVien.getPhongBan()))
+                    {
+                        spin.setSelection(i);
+                        break;
+                    }
+                }
             }
         });
 
@@ -115,11 +164,12 @@ public class NVActivity extends AppCompatActivity {
         nhanVien.setNgaySinh(txtNgay.getText().toString());
 
         for (int i = 0; i < data_PB.size(); i++) {
-            if(spnPB.getSelectedItem().toString() == data_PB.get(i).getTen())
+            if(spin.getSelectedItem().toString() == data_PB.get(i).getTen())
             {
                 nhanVien.setPhongBan(data_PB.get(i).getMa());
             }
         }
+
         dbNhanVien.Them(nhanVien);
         clear();
     }
@@ -131,7 +181,14 @@ public class NVActivity extends AppCompatActivity {
         nhanVien.setMa(txtMaNV.getText().toString());
         nhanVien.setTen(txtTenNV.getText().toString());
         nhanVien.setNgaySinh(txtNgay.getText().toString());
-        nhanVien.setPhongBan(txtPB.getText().toString());
+
+        for (int i = 0; i < data_PB.size(); i++) {
+            if(spin.getSelectedItem().toString() == data_PB.get(i).getTen())
+            {
+                nhanVien.setPhongBan(data_PB.get(i).getMa());
+            }
+        }
+
         dbNhanVien.Xoa(nhanVien);
         clear();
     }
@@ -143,7 +200,14 @@ public class NVActivity extends AppCompatActivity {
         nhanVien.setMa(txtMaNV.getText().toString());
         nhanVien.setTen(txtTenNV.getText().toString());
         nhanVien.setNgaySinh(txtNgay.getText().toString());
-        nhanVien.setPhongBan(txtPB.getText().toString());
+
+        for (int i = 0; i < data_PB.size(); i++) {
+            if(spin.getSelectedItem().toString() == data_PB.get(i).getTen())
+            {
+                nhanVien.setPhongBan(data_PB.get(i).getMa());
+            }
+        }
+
         dbNhanVien.Sua(nhanVien);
         clear();
     }
@@ -152,6 +216,7 @@ public class NVActivity extends AppCompatActivity {
         txtMaNV.setText("");
         txtTenNV.setText("");
         txtNgay.setText("");
+        spin.setSelection(0);
     }
 
     private void setConTrol() {
@@ -161,7 +226,7 @@ public class NVActivity extends AppCompatActivity {
 
         lvNV = findViewById(R.id.lvNV);
 
-        spnPB = findViewById(R.id.spnPB);
+        spin = findViewById(R.id.spnPB);
 
         btnThem = findViewById(R.id.btnThem);
         btnXoa = findViewById(R.id.btnXoa);
@@ -184,7 +249,26 @@ public class NVActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.mnExit) {
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(NVActivity.this);
+            builder.setTitle("Thông báo");
+            builder.setMessage("Bạn muốn thoát?");
+
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent( NVActivity.this, QLActivity.class);
+                    startActivity( intent );
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
         return super.onOptionsItemSelected(item);

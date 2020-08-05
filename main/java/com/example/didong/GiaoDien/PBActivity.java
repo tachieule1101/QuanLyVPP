@@ -1,15 +1,23 @@
 package com.example.didong.GiaoDien;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SearchEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.didong.Apdapter.CustomAdapterPB;
 import com.example.didong.Database.DBPhongBan;
@@ -52,16 +60,52 @@ public class PBActivity extends AppCompatActivity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                XoaDL();
-                HienThiDL();
+                AlertDialog.Builder builder = new AlertDialog.Builder(PBActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn muốn xóa?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        XoaDL();
+                        HienThiDL();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SuaDL();
-                HienThiDL();
+                AlertDialog.Builder builder = new AlertDialog.Builder(PBActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn muốn sửa?");
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SuaDL();
+                        HienThiDL();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -127,6 +171,7 @@ public class PBActivity extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThem);
         btnXoa = findViewById(R.id.btnXoa);
         btnSua = findViewById(R.id.btnSua);
+
     }
 
     @Override
@@ -145,9 +190,29 @@ public class PBActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.mnExit) {
-            finish();
-        }
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(PBActivity.this);
+            builder.setTitle("Thông báo");
+            builder.setMessage("Bạn muốn thoát?");
+
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent( PBActivity.this, QLActivity.class);
+                    startActivity( intent );
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
         return super.onOptionsItemSelected(item);
     }
+
 }

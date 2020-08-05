@@ -10,13 +10,15 @@
         style="@style/tieude"
         android:text="@string/thongtin" />
 
-    <EditText
-        android:id="@+id/txtMaPB"
-        style="@style/txt"
-        android:hint="@string/ma" />
+    <TextView
+        android:id="@+id/tvMaVPP"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18dp"
+        android:gravity="center"></TextView>
 
     <EditText
-        android:id="@+id/txtTenPB"
+        android:id="@+id/txtCTTenVPP"
         style="@style/txt"
         android:hint="@string/ten" />
 
@@ -33,4 +35,24 @@
     <TextView
         style="@style/tieude"
         android:text="@string/tool" />
+
+    <LinearLayout style="@style/chucnang">
+
+        <Button
+            android:id="@+id/btnXoa"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/them"
+            android:text="@string/xoa" />
+
+        <Button
+            android:id="@+id/btnSua"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/them"
+            android:text="@string/sua" />
+
+    </LinearLayout>
 </LinearLayout>
