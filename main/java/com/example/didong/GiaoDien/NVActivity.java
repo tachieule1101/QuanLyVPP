@@ -231,6 +231,7 @@ public class NVActivity extends AppCompatActivity{
         btnThem = findViewById(R.id.btnThem);
         btnXoa = findViewById(R.id.btnXoa);
         btnSua = findViewById(R.id.btnSua);
+
     }
 
     @Override
